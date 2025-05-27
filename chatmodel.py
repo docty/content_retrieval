@@ -11,7 +11,7 @@ from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import FunctionCallingAgent
 import os
 
-class LLMContextAware:
+class LLMChat:
 
     def __init__(self):
         self.llm = MistralAI(model="mistral-small-latest")
