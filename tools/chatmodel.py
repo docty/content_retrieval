@@ -40,10 +40,10 @@ class LLMChat:
     
     def load_data(self, files=None):
         if not os.path.exists("storage"):
-            #print("Building new index \n===========================================")
+            #print("Building new vector index \n===========================================")
             index = self.build_index(files)
         else:
-            #print("Loading existing index \n===========================================")
+            #print("Loading existing vector index \n===========================================")
             index = self.load_index()
         return index
         
@@ -60,14 +60,13 @@ class LLMChat:
                 query_engine=query_engine,
                 metadata=ToolMetadata(
                 name="cv",
-                description="Provides information about my cv",
+                description="Provides information about the invoice",
                 ),
             ),
         ]
 
         agent = FunctionCallingAgent.from_tools(
             query_engine_tools,
-            llm=self.llm,
             verbose=True,
             allow_parallel_tool_calls=False,
         )
